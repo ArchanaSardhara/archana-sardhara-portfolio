@@ -79,13 +79,19 @@ npm run lint    # Run ESLint
 
 ## Deployment
 
-The app is a standard Next.js application and deploys cleanly on [Vercel](https://vercel.com) or any platform that supports Next.js.
+### GitHub Pages (automated)
 
-1. Push the repository to your Git provider
-2. Import the project in Vercel (or your host)
-3. Use the default build command (`next build`) and output settings
+Pushes and merges to `master` run [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds a static export (`out/`) and publishes to the `gh-pages` branch.
 
-See the [Next.js deployment docs](https://nextjs.org/docs/app/building-your-application/deploying) for other hosting options.
+**One-time setup:** In the repo on GitHub, go to **Settings → Pages** and set the source to the **`gh-pages`** branch, folder **`/ (root)`**.
+
+**Live URL:** [https://archanasardhara.github.io/archana-sardhara-portfolio/](https://archanasardhara.github.io/archana-sardhara-portfolio/)
+
+Static export settings (`output: 'export'`, `basePath`, `assetPrefix`) live in `next.config.ts` and must match the repository name on GitHub.
+
+### Other hosts
+
+The app can also be deployed on [Vercel](https://vercel.com) or any host that supports Next.js. For Vercel, remove or adjust `basePath` / `assetPrefix` / `output: 'export'` in `next.config.ts` so the default Next.js build is used.
 
 ## License
 
